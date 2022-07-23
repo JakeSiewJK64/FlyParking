@@ -1,38 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flyparking/shared/page_template.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  int _counter = 0;
   int _selectedIndex = 0;
 
-  final List<BottomNavigationBarItem> _routes = [
-    const BottomNavigationBarItem(
+  static const List<BottomNavigationBarItem> _routes = [
+    BottomNavigationBarItem(
       icon: Icon(Icons.home),
       label: 'Home',
     ),
-    const BottomNavigationBarItem(
-      icon: Icon(Icons.business),
-      label: 'Business',
+    BottomNavigationBarItem(
+      icon: Icon(Icons.local_parking),
+      label: 'Parking',
     ),
-    const BottomNavigationBarItem(
-      icon: Icon(Icons.school),
-      label: 'School',
+    BottomNavigationBarItem(
+      icon: Icon(Icons.account_circle),
+      label: 'Profile',
     ),
   ];
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -42,18 +34,39 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Center(
+      body: Container(
+        width: size.width,
+        height: size.height,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times. Stop it, get some help:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+          children: [
+            PageTemplate(title: "My Parking", widgets: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text("Welcome back, JakeSiewJK64"),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: const Color(0xffe74c3c)),
+                      child: const Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                          "Credit: 10",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ]),
           ],
         ),
       ),
@@ -62,11 +75,6 @@ class _HomePageState extends State<HomePage> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
