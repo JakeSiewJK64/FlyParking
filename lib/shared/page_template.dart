@@ -27,7 +27,7 @@ class _PageTemplateState extends State<PageTemplate> {
               textAlign: TextAlign.start,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 30,
+                fontSize: 32,
               ),
             ),
           ),
