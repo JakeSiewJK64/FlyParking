@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flyparking/models/menu_option.dart';
 import 'package:flyparking/shared/custom_card.dart';
+import 'package:flyparking/shared/custom_option_menu_viewholder.dart';
 import 'package:flyparking/shared/page_template.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,6 +12,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final List<MenuOption> menuOptions = [
+    MenuOption("Home", "assets/home.png", "/home"),
+    MenuOption("Account", "assets/profile.png", "/home"),
+    MenuOption("Topup", "assets/topup.png", "/home"),
+    MenuOption("Parking", "assets/parking.png", "/home"),
+    MenuOption("Vechicles", "assets/car.png", "/home"),
+  ];
+
+  List<Widget> getWidgets() {
+    return <Widget>[
+      for (var item in menuOptions) CustomOptionMenuViewHolder(optionItem: item)
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -58,22 +74,21 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                const CustomCard(
+                CustomCard(
                   cardTitle: "cardTitle",
                   width: 100,
                   widgets: [
-                    Text("data"),
-                    Text("data"),
-                    Text("data"),
-                    Text("data"),
-                    Text("data"),
-                    Text("data"),
-                    Text("data"),
-                    Text("data"),
-                    Text("data"),
-                    Text("data"),
-                    Text("data"),
-                    Text("data"),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        child: Wrap(
+                          spacing: 40,
+                          direction: Axis.horizontal,
+                          children: getWidgets(),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ],
