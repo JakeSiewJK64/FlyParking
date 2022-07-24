@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flyparking/pages/login.dart';
-import 'package:flyparking/pages/signup.dart';
+import 'package:flyparking/pages/authentication/login.dart';
+import 'package:flyparking/pages/authentication/signup.dart';
 
 class Authentication extends StatefulWidget {
   const Authentication({Key? key}) : super(key: key);

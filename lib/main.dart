@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flyparking/pages/authentication.dart';
+import 'package:flyparking/pages/authentication/authentication.dart';
 import 'package:flyparking/shared/appcomponent.dart';
 
 void main() {
