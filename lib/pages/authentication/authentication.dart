@@ -10,9 +10,7 @@ class Authentication extends StatefulWidget {
 }
 
 class _AuthenticationState extends State<Authentication> {
-  final _formKey = GlobalKey<FormState>();
   bool isSignup = true;
-
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;

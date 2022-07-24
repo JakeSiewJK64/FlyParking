@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flyparking/utils/string_extensions.dart';
 
@@ -14,6 +12,16 @@ class _LoginState extends State<Login> {
   late String? username;
   late String? password;
   bool isSignup = true;
+
+  final _snackBar = SnackBar(
+    content: const Text('Successfully Logged In!'),
+    duration: const Duration(seconds: 5),
+    action: SnackBarAction(
+      label: 'OK',
+      onPressed: () {},
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -30,7 +38,7 @@ class _LoginState extends State<Login> {
               hintText: "Enter Username",
             ),
             autovalidateMode: AutovalidateMode.onUserInteraction,
-            onSaved: (value) => username = value,
+            onChanged: (value) => username = value,
           ),
         ),
         Padding(
@@ -46,7 +54,7 @@ class _LoginState extends State<Login> {
               hintText: "Enter Password",
             ),
             autovalidateMode: AutovalidateMode.onUserInteraction,
-            onSaved: (value) => username = value,
+            onChanged: (value) => password = value,
             validator: (value) {
               if (!StringExtensions(value!).isValidPassword()) {
                 return "a minimum of 10 characters required!";
@@ -62,6 +70,7 @@ class _LoginState extends State<Login> {
               textStyle: const TextStyle(fontSize: 20),
             ),
             onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(_snackBar);
               Navigator.pushNamed(context, "/home");
             },
             icon: const Icon(
