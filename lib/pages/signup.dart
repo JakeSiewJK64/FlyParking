@@ -97,7 +97,9 @@ class _SignupState extends State<Signup> {
               padding: const EdgeInsets.all(16),
               textStyle: const TextStyle(fontSize: 20),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, "/home");
+            },
             icon: const Icon(
               Icons.login,
               size: 20.0,

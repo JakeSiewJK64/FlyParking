@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flyparking/pages/authentication.dart';
+import 'package:flyparking/shared/appcomponent.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Authentication(),
+      initialRoute: '/auth/authenticate',
+      routes: {
+        "/auth/authenticate": (context) => const Authentication(),
+        "/home": (context) => const AppComponent(),
+      },
     );
   }
 }
