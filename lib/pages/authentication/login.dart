@@ -27,7 +27,7 @@ class _LoginState extends State<Login> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(0, 10, 10, 0),
+          padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
           child: TextFormField(
             cursorColor: const Color(0xfff1c40f),
             enableSuggestions: false,
@@ -42,7 +42,7 @@ class _LoginState extends State<Login> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(0, 10, 10, 0),
+          padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
           child: TextFormField(
             cursorColor: const Color(0xfff1c40f),
             obscureText: true,
