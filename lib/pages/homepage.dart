@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flyparking/models/highlights_model.dart';
 import 'package:flyparking/models/menu_option.dart';
 import 'package:flyparking/shared/custom_card.dart';
 import 'package:flyparking/shared/custom_option_menu_viewholder.dart';
+import 'package:flyparking/shared/highlights_component_viewholder.dart';
 import 'package:flyparking/shared/page_template.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,9 +22,21 @@ class _HomePageState extends State<HomePage> {
     MenuOption("Vechicles", "assets/car.png", "/home"),
   ];
 
+  final List<HighlightsModel> highlights = [
+    HighlightsModel("title", "message", "assets/flyparking.png"),
+    HighlightsModel("title", "message", "assets/flyparking.png")
+  ];
+
   List<Widget> getWidgets() {
     return <Widget>[
       for (var item in menuOptions) CustomOptionMenuViewHolder(optionItem: item)
+    ];
+  }
+
+  List<Widget> getHighlights() {
+    return <Widget>[
+      for (var item in highlights)
+        HighlightsComponentViewHolder(highlightsModel: item)
     ];
   }
 
@@ -33,59 +47,90 @@ class _HomePageState extends State<HomePage> {
       body: SizedBox(
         width: size.width,
         height: size.height,
-        child: Column(
+        child: ListView(
           children: [
-            PageTemplate(
-              title: "My FlyParking",
-              showImage: true,
-              widgets: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Welcome back, JakeSiewJK64",
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: const Color(0xffe74c3c),
+            Column(
+              children: [
+                PageTemplate(
+                  title: "My FlyParking",
+                  showImage: true,
+                  widgets: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "Welcome back, JakeSiewJK64",
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                          child: const Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Text(
-                              "Credit: 10.00",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: const Color(0xffe74c3c),
+                              ),
+                              child: const Padding(
+                                padding: EdgeInsets.all(10),
+                                child: Text(
+                                  "Credit: 10.00",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                      child: CustomCard(
+                        cardTitle: "",
+                        width: 100,
+                        widgets: [
+                          Align(
+                            alignment: Alignment.center,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                              child: Wrap(
+                                spacing: 55,
+                                direction: Axis.horizontal,
+                                children: getWidgets(),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Highlights",
+                          style: TextStyle(fontSize: 28),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                CustomCard(
-                  cardTitle: "",
-                  width: 100,
-                  widgets: [
-                    Align(
-                      alignment: Alignment.center,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                        child: Wrap(
-                          spacing: 55,
-                          direction: Axis.horizontal,
-                          children: getWidgets(),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: getHighlights(),
+                            ),
+                          ),
                         ),
                       ),
                     ),
