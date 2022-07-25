@@ -34,12 +34,16 @@ class _CustomCardState extends State<CustomCard> {
               children: [
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(
-                    widget.cardTitle,
-                    textAlign: TextAlign.left,
-                    style: const TextStyle(
-                      fontSize: 32.0,
-                      fontWeight: FontWeight.bold,
+                  child: Visibility(
+                    visible: widget.cardTitle.isNotEmpty,
+                    maintainSize: false,
+                    child: Text(
+                      widget.cardTitle,
+                      textAlign: TextAlign.left,
+                      style: const TextStyle(
+                        fontSize: 32.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),

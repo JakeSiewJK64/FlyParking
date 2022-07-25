@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 CustomCard(
-                  cardTitle: "cardTitle",
+                  cardTitle: "",
                   width: 100,
                   widgets: [
                     Align(
@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                         child: Wrap(
-                          spacing: 40,
+                          spacing: 55,
                           direction: Axis.horizontal,
                           children: getWidgets(),
                         ),
