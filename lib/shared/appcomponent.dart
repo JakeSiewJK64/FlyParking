@@ -13,7 +13,7 @@ class AppComponent extends StatefulWidget {
 class _AppComponentState extends State<AppComponent> {
   int _selectedIndex = 0;
 
-  final List screens = const [HomePage(), Profile(), Parking()];
+  final List screens = const [HomePage(), Parking(), Profile()];
 
   void _onItemTapped(int index) {
     setState(() {
